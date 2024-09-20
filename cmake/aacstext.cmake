@@ -1,0 +1,62 @@
+include(ExternalProject)
+set(PACKAGE_NAME_CONTENT_SAFETY_TEXT "azure.ai.contentsafety.extension.embedded.text")
+set(PACKAGE_VERSION_CONTENT_SAFETY_TEXT "1.0.1-beta.1")
+set(CONTENT_SAFETY_TEXT_PROJECT "extern_aacstext")
+
+SET(AACS_TEXT_LIB_FOLDER "Release")
+if (CMAKE_BUILD_TYPE STREQUAL Debug)
+    SET(AACS_TEXT_LIB_FOLDER "Debug")
+endif()
+
+set(CONTENT_SAFETY_TEXT_PREFIX_DIR ${THIRD_PARTY_PATH}/contentsafety/text)
+set(CONTENT_SAFETY_TEXT_SOURCE_DIR
+        ${THIRD_PARTY_PATH}/contentsafety/text/src/${CONTENT_SAFETY_TEXT_PROJECT})
+set(CONTENT_SAFETY_TEXT_INSTALL_DIR ${THIRD_PARTY_PATH}/install/contentsafety/text)
+set(CONTENT_SAFETY_TEXT_INC_DIR
+        "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/include"
+        CACHE PATH "ContentSafety text include directory." FORCE)
+set(CONTENT_SAFETY_TEXT_LIB_DIR
+        "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib"
+        CACHE PATH "ContentSafety text lib directory." FORCE)
+set(CONTENT_SAFETY_TEXT_URL
+        "https://globalcdn.nuget.org/packages/${PACKAGE_NAME_CONTENT_SAFETY_TEXT}.${PACKAGE_VERSION_CONTENT_SAFETY_TEXT}.nupkg"
+)
+
+set(CONTENT_SAFETY_TEXT_LIB_NAME
+        "Azure.AI.ContentSafety.Embedded.Text.dll")
+
+set(CONTENT_SAFETY_TEXT_HEADER_DIR
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/build/native/include")
+
+set(CONTENT_SAFETY_TEXT_SHARED_LIB_SOURCE
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/win-x64/native/${AACS_TEXT_LIB_FOLDER}/${CONTENT_SAFETY_TEXT_LIB_NAME}"
+        CACHE FILEPATH "ContentSafety text source library." FORCE)
+set(CONTENT_SAFETY_TEXT_SHARED_LIB
+        "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib/${CONTENT_SAFETY_TEXT_LIB_NAME}"
+        CACHE FILEPATH "ContentSafety text shared library." FORCE)
+
+set(CONTENT_SAFETY_TEXT_STATIC_LIB_SOURCE
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/win-x64/native/${AACS_TEXT_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Text.lib"
+        CACHE FILEPATH "ContentSafety text  source library." FORCE)
+set(CONTENT_SAFETY_TEXT_STATIC_LIB
+        "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib/Azure.AI.ContentSafety.Embedded.Text.lib"
+        CACHE FILEPATH "ContentSafety text  shared library." FORCE)
+
+ExternalProject_Add(
+        ${CONTENT_SAFETY_TEXT_PROJECT}
+        ${EXTERNAL_PROJECT_LOG_ARGS}
+        URL ${CONTENT_SAFETY_TEXT_URL}
+        PREFIX ${CONTENT_SAFETY_TEXT_PREFIX_DIR}
+        DOWNLOAD_NO_PROGRESS 1
+        DOWNLOAD_EXTRACT_TIMESTAMP true
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND ""
+        UPDATE_COMMAND ""
+        INSTALL_COMMAND
+        ${CMAKE_COMMAND} -E copy ${CONTENT_SAFETY_TEXT_SHARED_LIB_SOURCE} ${CONTENT_SAFETY_TEXT_SHARED_LIB} &&
+        ${CMAKE_COMMAND} -E copy ${CONTENT_SAFETY_TEXT_STATIC_LIB_SOURCE} ${CONTENT_SAFETY_TEXT_STATIC_LIB} &&
+        ${CMAKE_COMMAND} -E copy_directory ${CONTENT_SAFETY_TEXT_HEADER_DIR} ${CONTENT_SAFETY_TEXT_INC_DIR}
+        BUILD_BYPRODUCTS ${CONTENT_SAFETY_TEXT_STATIC_LIB})
+add_library(contentsafetytext STATIC IMPORTED GLOBAL)
+set_property(TARGET contentsafetytext PROPERTY IMPORTED_LOCATION ${CONTENT_SAFETY_TEXT_STATIC_LIB})
+add_dependencies(contentsafetytext ${CONTENT_SAFETY_TEXT_PROJECT})

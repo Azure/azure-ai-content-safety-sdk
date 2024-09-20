@@ -1,0 +1,14 @@
+cmake-build-*
+externals
+third_party
+.idea
+models
+datasets
+build-android
+.vs
+.scripts/obj
+.scripts/bin
+out
+build
+**/bin/**
+**/obj/**
