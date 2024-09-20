@@ -1,0 +1,26 @@
+﻿{
+  "configurations": [
+    {
+      "name": "x64-Debug",
+      "generator": "Visual Studio 17 2022 Win64",
+      "configurationType": "Debug",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_BUILD_TYPE=Debug",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "buildCommandArgs": "",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_BUILD_TYPE=Release",
+      "configurationType": "Release",
+      "ctestCommandArgs": "",
+      "generator": "Visual Studio 17 2022 Win64",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "name": "x64-Release"
+    }
+  ]
+}
