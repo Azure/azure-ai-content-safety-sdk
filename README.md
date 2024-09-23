@@ -33,6 +33,7 @@ Sample settings:
    * Device ID of the GPU, if `gpuEnabled` is true.
 1. `numThreads`
    * Number of threads to be used in a multi-threaded environment.
+   * This parameter only works for CPU.
    * We support a maximum number of 4 threads.
 1. `licenseText`
    * License text for model initiation.
