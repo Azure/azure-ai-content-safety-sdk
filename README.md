@@ -80,7 +80,7 @@ Sample settings:
 
 * Start Microsoft Visual Studio and select **File** \> **Open** \> **Folder**.
 * Navigate to the folder for this sample and select it.
-* Add a new folder for storing the text/image analysis models as updated in the **config.ini** `modelDirectory`  and save all the models in it. [Sample models](// Provide document link to get models)
+* Add a new folder for storing the text/image analysis models as updated in the **config.ini** `modelDirectory`  and save all the models in it. [Sample models](https://aka.ms/azure-ai-content-safety-models)
 * Update the config.ini file for required text/image use case with the path and names for the corresponding models.
 * Compile the complete project using **Build** \> **Build All(Ctrl+Shift+B) / Rebuild All**
   * If there is an error "*Could not find a part of the path*" or "*MSB6003*" while SDK packages are installed, copy/move this sample folder to the storage drive root or close to it, so that folder and file paths become shorter.
