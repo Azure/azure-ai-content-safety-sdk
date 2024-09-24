@@ -19,8 +19,6 @@ Requirements specific to Azure AI Content Safety embedded SDK samples are as fol
 
 ## Build the sample
 
-**By building this sample you will download the Microsoft Azure AI Content Safety embedded SDK. By downloading you acknowledge its license, see [Azure AI Content Safety embedded SDK license agreement](https://github.com/Azure/azure-ai-content-safety-sdk/blob/main/LICENSE.txt).**
-
 [Download the sample code to your development PC.](https://github.com/Azure/azure-ai-content-safety-sdk)
 
 To tailor the sample to your configuration:
