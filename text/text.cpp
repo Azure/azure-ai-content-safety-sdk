@@ -151,8 +151,7 @@ void processInputText(TextModelRuntime* aacs, std::string inputText) {
     auto severityThreshold = 3;
     // Run inference
     auto analyzeStart = std::chrono::high_resolution_clock::now();
-    auto* result = new AnalyzeTextResult();
-    aacs->AnalyzeText(request, *result);
+    auto result = aacs->AnalyzeText(request);
     // Print the result to the console
     for (const auto& categoryAnalysis : result->categoriesAnalysis) {
         if (categoryAnalysis.severity > 0 && categoryAnalysis.severity < severityThreshold) {
@@ -184,8 +183,7 @@ void processInputTextWithBlockList(TextModelRuntime* aacs, std::string inputText
     auto severityThreshold = 3;
     // Run inference
     auto analyzeStart = std::chrono::high_resolution_clock::now();
-    auto* result = new AnalyzeTextResult();
-    aacs->AnalyzeText(request, *result);
+    auto result = aacs->AnalyzeText(request);
     // Print the result to the console
     for (const auto& categoryAnalysis : result->categoriesAnalysis) {
         if (categoryAnalysis.severity > 0 && categoryAnalysis.severity < severityThreshold) {
