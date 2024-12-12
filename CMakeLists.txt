@@ -10,8 +10,6 @@ set(THIRD_PARTY_PATH  "${CMAKE_BINARY_DIR}/third_party" CACHE STRING
 include(cmake/directml.cmake)
 # include onnxruntime
 include(cmake/onnxruntime.cmake)
-# include opencv
-include(cmake/opencv.cmake)
 
 add_subdirectory(image)
 add_subdirectory(text)

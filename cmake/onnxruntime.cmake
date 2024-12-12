@@ -25,6 +25,10 @@ set(ONNXRUNTIME_URL
         "https://globalcdn.nuget.org/packages/microsoft.ml.onnxruntime.directml.${ONNXRUNTIME_VERSION}.nupkg"
 )
 
+SET(ONNXRUNTIME_LIB_ARCH "win-x64")
+if (CMAKE_SYSTEM_PROCESSOR STREQUAL ARM64)
+    SET(ONNXRUNTIME_LIB_ARCH "win-arm64")
+endif()
 
 # For ONNXRUNTIME code to include internal headers.
 include_directories(${ONNXRUNTIME_INC_DIR})
@@ -32,13 +36,13 @@ set(ONNXRUNTIME_LIB_NAME
         "onnxruntime${CMAKE_SHARED_LIBRARY_SUFFIX}")
 
 set(ONNXRUNTIME_SHARED_LIB_SOURCE
-        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/win-x64/native/onnxruntime.dll"
+        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/${ONNXRUNTIME_LIB_ARCH}/native/onnxruntime.dll"
         CACHE FILEPATH "ONNXRUNTIME source library." FORCE)
 set(ONNXRUNTIME_SHARED_LIB
         "${ONNXRUNTIME_INSTALL_DIR}/lib/onnxruntime.dll"
         CACHE FILEPATH "ONNXRUNTIME shared library." FORCE)
 set(ONNXRUNTIME_STATIC_LIB_SOURCE
-        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/win-x64/native/onnxruntime.lib"
+        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/${ONNXRUNTIME_LIB_ARCH}/native/onnxruntime.lib"
         CACHE FILEPATH "ONNXRUNTIME static library." FORCE)
 set(ONNXRUNTIME_STATIC_LIB
         "${ONNXRUNTIME_INSTALL_DIR}/lib/onnxruntime.lib"

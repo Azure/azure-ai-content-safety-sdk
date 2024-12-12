@@ -8,6 +8,12 @@ if (CMAKE_BUILD_TYPE STREQUAL Debug)
     SET(AACS_TEXT_LIB_FOLDER "Debug")
 endif()
 
+SET(AACS_TEXT_LIB_ARCH "win-x64")
+if (CMAKE_SYSTEM_PROCESSOR STREQUAL ARM64)
+    SET(AACS_TEXT_LIB_ARCH "win-arm64")
+endif()
+message(STATUS "testing logs sameer AACS_TEXT_LIB_ARCH = ${AACS_TEXT_LIB_ARCH}")
+
 set(CONTENT_SAFETY_TEXT_PREFIX_DIR ${THIRD_PARTY_PATH}/contentsafety/text)
 set(CONTENT_SAFETY_TEXT_SOURCE_DIR
         ${THIRD_PARTY_PATH}/contentsafety/text/src/${CONTENT_SAFETY_TEXT_PROJECT})
@@ -29,14 +35,14 @@ set(CONTENT_SAFETY_TEXT_HEADER_DIR
         "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/build/native/include")
 
 set(CONTENT_SAFETY_TEXT_SHARED_LIB_SOURCE
-        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/win-x64/native/${AACS_TEXT_LIB_FOLDER}/${CONTENT_SAFETY_TEXT_LIB_NAME}"
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/${AACS_TEXT_LIB_ARCH}/native/${AACS_TEXT_LIB_FOLDER}/${CONTENT_SAFETY_TEXT_LIB_NAME}"
         CACHE FILEPATH "ContentSafety text source library." FORCE)
 set(CONTENT_SAFETY_TEXT_SHARED_LIB
         "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib/${CONTENT_SAFETY_TEXT_LIB_NAME}"
         CACHE FILEPATH "ContentSafety text shared library." FORCE)
 
 set(CONTENT_SAFETY_TEXT_STATIC_LIB_SOURCE
-        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/win-x64/native/${AACS_TEXT_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Text.lib"
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/${AACS_TEXT_LIB_ARCH}/native/${AACS_TEXT_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Text.lib"
         CACHE FILEPATH "ContentSafety text  source library." FORCE)
 set(CONTENT_SAFETY_TEXT_STATIC_LIB
         "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib/Azure.AI.ContentSafety.Embedded.Text.lib"
