@@ -15,7 +15,7 @@
 
 using namespace Azure::AI::ContentSafety;
 
-std::map<std::string, std::string> readConfig(const std::string &filename) {
+std::map<std::string, std::string> readConfig(const std::string& filename) {
     std::map<std::string, std::string> config;
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -38,16 +38,16 @@ std::map<std::string, std::string> readConfig(const std::string &filename) {
 
 std::string getCategoryName(TextCategory category) {
     switch (category) {
-        case TextCategory::Hate:
-            return "Hate";
-        case TextCategory::SelfHarm:
-            return "Self Harm";
-        case TextCategory::Sexual:
-            return "Sexual";
-        case TextCategory::Violence:
-            return "Violence";
-        default:
-            return "Unknown";
+    case TextCategory::Hate:
+        return "Hate";
+    case TextCategory::SelfHarm:
+        return "Self Harm";
+    case TextCategory::Sexual:
+        return "Sexual";
+    case TextCategory::Violence:
+        return "Violence";
+    default:
+        return "Unknown";
     }
 }
 
@@ -116,7 +116,7 @@ std::vector<char> readFile(const std::string& filename) {
     return buffer;
 }
 
-void Init(TextModelRuntime **aacs, std::map<std::string, std::string> config) {
+void Init(TextModelRuntime** aacs, std::map<std::string, std::string> config) {
     std::string licenseText = config["licenseText"];
 
     TextModelConfig aacsConfig;
@@ -136,9 +136,11 @@ void Init(TextModelRuntime **aacs, std::map<std::string, std::string> config) {
     (*aacs) = new TextModelRuntime(licenseText.c_str(), aacsConfig);
     try {
         (*aacs)->Reload();
-    } catch (const std::exception &ex) {
+    }
+    catch (const std::exception& ex) {
         std::cerr << "Exception caught: " << ex.what() << std::endl;
-    } catch (...) {
+    }
+    catch (...) {
         std::cerr << "Unknown exception caught" << std::endl;
     }
 }
@@ -151,7 +153,8 @@ void processInputText(TextModelRuntime* aacs, std::string inputText) {
     auto severityThreshold = 3;
     // Run inference
     auto analyzeStart = std::chrono::high_resolution_clock::now();
-    auto result = aacs->AnalyzeText(request);
+    auto* result = new AnalyzeTextResult();
+    aacs->AnalyzeText(request, *result);
     // Print the result to the console
     for (const auto& categoryAnalysis : result->categoriesAnalysis) {
         if (categoryAnalysis.severity > 0 && categoryAnalysis.severity < severityThreshold) {
@@ -183,7 +186,8 @@ void processInputTextWithBlockList(TextModelRuntime* aacs, std::string inputText
     auto severityThreshold = 3;
     // Run inference
     auto analyzeStart = std::chrono::high_resolution_clock::now();
-    auto result = aacs->AnalyzeText(request);
+    auto* result = new AnalyzeTextResult();
+    aacs->AnalyzeText(request, *result);
     // Print the result to the console
     for (const auto& categoryAnalysis : result->categoriesAnalysis) {
         if (categoryAnalysis.severity > 0 && categoryAnalysis.severity < severityThreshold) {
@@ -263,14 +267,14 @@ void processInputFileWithBlockList(TextModelRuntime* aacs, const std::string& in
     file.close();
 }
 
-void processSampleInputFiles(TextModelRuntime *aacs, const std::string& inputDirectory, const std::string& inputFileName, const std::string& inputWithBlockListFileName) {
+void processSampleInputFiles(TextModelRuntime* aacs, const std::string& inputDirectory, const std::string& inputFileName, const std::string& inputWithBlockListFileName) {
     processInputFile(aacs, inputDirectory, inputFileName);
     processInputFileWithBlockList(aacs, inputDirectory, inputWithBlockListFileName);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     std::map<std::string, std::string> config = readConfig("config.ini");
-    TextModelRuntime *aacs = NULL;
+    TextModelRuntime* aacs = NULL;
     Init(&aacs, config);
 
     processSampleInputFiles(aacs, config["inputTextDirectory"], config["inputTextFile"], config["inputWithBlockListTextFile"]);
@@ -279,4 +283,3 @@ int main(int argc, char *argv[]) {
     _getch();
     return 0;
 }
-
