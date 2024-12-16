@@ -72,7 +72,9 @@ Sample settings:
    * More than one csv file with block list strings can be added. The names of these csv files will be used as block list names.
    * Required only for text analysis use case.
    * In order to see output with block list demo, this file must be added and sample strings should be placed in it.
-
+1. `logEnabled`
+   * Set as **true** to enable writing logs to a file in output directory, otherwise ignore or set to **false**.
+   * This config parameter is not necessary and must be used only when we need log file to be shared.
 
 ### Visual Studio (Windows)
 
