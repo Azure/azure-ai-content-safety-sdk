@@ -8,8 +8,6 @@ if (CMAKE_BUILD_TYPE STREQUAL Debug)
     SET(AACS_IMG_LIB_FOLDER "Debug")
 endif()
 
-message(STATUS "testing logs AACS_LIB_ARCH = ${AACS_LIB_ARCH}")
-
 set(CONTENT_SAFETY_IMAGE_PREFIX_DIR ${THIRD_PARTY_PATH}/contentsafety/image)
 set(CONTENT_SAFETY_IMAGE_SOURCE_DIR
         ${THIRD_PARTY_PATH}/contentsafety/image/src/${CONTENT_SAFETY_IMAGE_PROJECT})
