@@ -8,6 +8,8 @@ if (CMAKE_BUILD_TYPE STREQUAL Debug)
     SET(AACS_IMG_LIB_FOLDER "Debug")
 endif()
 
+message(STATUS "testing logs AACS_LIB_ARCH = ${AACS_LIB_ARCH}")
+
 set(CONTENT_SAFETY_IMAGE_PREFIX_DIR ${THIRD_PARTY_PATH}/contentsafety/image)
 set(CONTENT_SAFETY_IMAGE_SOURCE_DIR
         ${THIRD_PARTY_PATH}/contentsafety/image/src/${CONTENT_SAFETY_IMAGE_PROJECT})
@@ -29,14 +31,14 @@ set(CONTENT_SAFETY_IMAGE_HEADER_DIR
         "${CONTENT_SAFETY_IMAGE_SOURCE_DIR}/build/native/include")
 
 set(CONTENT_SAFETY_IMAGE_SHARED_LIB_SOURCE
-        "${CONTENT_SAFETY_IMAGE_SOURCE_DIR}/runtimes/win-x64/native/${AACS_IMG_LIB_FOLDER}/${CONTENT_SAFETY_IMAGE_LIB_NAME}"
+        "${CONTENT_SAFETY_IMAGE_SOURCE_DIR}/runtimes/${AACS_LIB_ARCH}/native/${AACS_IMG_LIB_FOLDER}/${CONTENT_SAFETY_IMAGE_LIB_NAME}"
         CACHE FILEPATH "ContentSafety image source library." FORCE)
 set(CONTENT_SAFETY_IMAGE_SHARED_LIB
         "${CONTENT_SAFETY_IMAGE_INSTALL_DIR}/lib/${CONTENT_SAFETY_IMAGE_LIB_NAME}"
         CACHE FILEPATH "ContentSafety image shared library." FORCE)
 
 set(CONTENT_SAFETY_IMAGE_STATIC_LIB_SOURCE
-        "${CONTENT_SAFETY_IMAGE_SOURCE_DIR}/runtimes/win-x64/native/${AACS_IMG_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Image.lib"
+        "${CONTENT_SAFETY_IMAGE_SOURCE_DIR}/runtimes/${AACS_LIB_ARCH}/native/${AACS_IMG_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Image.lib"
         CACHE FILEPATH "ContentSafety image source library." FORCE)
 set(CONTENT_SAFETY_IMAGE_STATIC_LIB
         "${CONTENT_SAFETY_IMAGE_INSTALL_DIR}/lib/Azure.AI.ContentSafety.Embedded.Image.lib"
