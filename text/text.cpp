@@ -126,6 +126,7 @@ void Init(TextModelRuntime **aacs, std::map<std::string, std::string> config) {
     aacsConfig.modelDirectory = config["modelDirectory"];
     aacsConfig.modelName = config["modelName"];
     aacsConfig.spmModelName = config["spmModelName"];
+    aacsConfig.logEnabled = (config["logEnabled"] == "true");
     std::cout << "gpuEnabled: " << aacsConfig.gpuEnabled << std::endl;
     std::cout << "gpuDeviceId: " << aacsConfig.gpuDeviceId << std::endl;
     std::cout << "numThreads: " << aacsConfig.numThreads << std::endl;

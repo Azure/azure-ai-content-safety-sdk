@@ -1,6 +1,6 @@
 include(ExternalProject)
 set(PACKAGE_NAME_CONTENT_SAFETY_TEXT "azure.ai.contentsafety.extension.embedded.text")
-set(PACKAGE_VERSION_CONTENT_SAFETY_TEXT "1.0.1-beta.3")
+set(PACKAGE_VERSION_CONTENT_SAFETY_TEXT "1.0.1-beta.4")
 set(CONTENT_SAFETY_TEXT_PROJECT "extern_aacstext")
 
 SET(AACS_TEXT_LIB_FOLDER "Release")
