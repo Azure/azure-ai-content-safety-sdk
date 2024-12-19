@@ -32,13 +32,13 @@ set(ONNXRUNTIME_LIB_NAME
         "onnxruntime${CMAKE_SHARED_LIBRARY_SUFFIX}")
 
 set(ONNXRUNTIME_SHARED_LIB_SOURCE
-        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/win-x64/native/onnxruntime.dll"
+        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/${AACS_LIB_ARCH}/native/onnxruntime.dll"
         CACHE FILEPATH "ONNXRUNTIME source library." FORCE)
 set(ONNXRUNTIME_SHARED_LIB
         "${ONNXRUNTIME_INSTALL_DIR}/lib/onnxruntime.dll"
         CACHE FILEPATH "ONNXRUNTIME shared library." FORCE)
 set(ONNXRUNTIME_STATIC_LIB_SOURCE
-        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/win-x64/native/onnxruntime.lib"
+        "${ONNXRUNTIME_SOURCE_DIR}/runtimes/${AACS_LIB_ARCH}/native/onnxruntime.lib"
         CACHE FILEPATH "ONNXRUNTIME static library." FORCE)
 set(ONNXRUNTIME_STATIC_LIB
         "${ONNXRUNTIME_INSTALL_DIR}/lib/onnxruntime.lib"

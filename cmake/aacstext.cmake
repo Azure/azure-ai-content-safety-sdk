@@ -29,14 +29,14 @@ set(CONTENT_SAFETY_TEXT_HEADER_DIR
         "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/build/native/include")
 
 set(CONTENT_SAFETY_TEXT_SHARED_LIB_SOURCE
-        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/win-x64/native/${AACS_TEXT_LIB_FOLDER}/${CONTENT_SAFETY_TEXT_LIB_NAME}"
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/${AACS_LIB_ARCH}/native/${AACS_TEXT_LIB_FOLDER}/${CONTENT_SAFETY_TEXT_LIB_NAME}"
         CACHE FILEPATH "ContentSafety text source library." FORCE)
 set(CONTENT_SAFETY_TEXT_SHARED_LIB
         "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib/${CONTENT_SAFETY_TEXT_LIB_NAME}"
         CACHE FILEPATH "ContentSafety text shared library." FORCE)
 
 set(CONTENT_SAFETY_TEXT_STATIC_LIB_SOURCE
-        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/win-x64/native/${AACS_TEXT_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Text.lib"
+        "${CONTENT_SAFETY_TEXT_SOURCE_DIR}/runtimes/${AACS_LIB_ARCH}/native/${AACS_TEXT_LIB_FOLDER}/Azure.AI.ContentSafety.Embedded.Text.lib"
         CACHE FILEPATH "ContentSafety text  source library." FORCE)
 set(CONTENT_SAFETY_TEXT_STATIC_LIB
         "${CONTENT_SAFETY_TEXT_INSTALL_DIR}/lib/Azure.AI.ContentSafety.Embedded.Text.lib"

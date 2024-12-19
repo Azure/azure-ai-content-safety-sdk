@@ -1,4 +1,6 @@
 add_executable(EmbeddedAACSImageDemo image.cpp)
+# include opencv
+include(${PROJECT_SOURCE_DIR}/cmake/opencv.cmake)
 include(${PROJECT_SOURCE_DIR}/cmake/aacsimage.cmake)
 
 # include directories for image

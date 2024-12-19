@@ -16,15 +16,20 @@ set(DIRECTML_URL
 set(DIRECTML_LIB_NAME
         "DirectML.dll")
 
+SET(DIRECTML_LIB_ARCH "x64-win")
+if (CMAKE_SYSTEM_PROCESSOR STREQUAL ARM64)
+    SET(DIRECTML_LIB_ARCH "arm64-win")
+endif()
+
 set(DIRECTML_SHARED_LIB_SOURCE
-        "${DIRECTML_SOURCE_DIR}/bin/x64-win/${DIRECTML_LIB_NAME}"
+        "${DIRECTML_SOURCE_DIR}/bin/${DIRECTML_LIB_ARCH}/${DIRECTML_LIB_NAME}"
         CACHE FILEPATH "DirectML source library." FORCE)
 set(DIRECTML_SHARED_LIB
         "${DIRECTML_INSTALL_DIR}/lib/${DIRECTML_LIB_NAME}"
         CACHE FILEPATH "DirectML shared library." FORCE)
 
 set(DIRECTML_STATIC_LIB_SOURCE
-        "${DIRECTML_SOURCE_DIR}/bin/x64-win/DirectML.lib"
+        "${DIRECTML_SOURCE_DIR}/bin/${DIRECTML_LIB_ARCH}/DirectML.lib"
         CACHE FILEPATH "DirectML source library." FORCE)
 set(DIRECTML_STATIC_LIB
         "${DIRECTML_INSTALL_DIR}/lib/DirectML.lib"
