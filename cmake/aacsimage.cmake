@@ -1,6 +1,6 @@
 include(ExternalProject)
 set(PACKAGE_NAME_CONTENT_SAFETY_IMAGE "azure.ai.contentsafety.extension.embedded.image")
-set(PACKAGE_VERSION_CONTENT_SAFETY_IMAGE "1.0.1-beta.2")
+set(PACKAGE_VERSION_CONTENT_SAFETY_IMAGE "1.0.1-beta.4")
 set(CONTENT_SAFETY_IMAGE_PROJECT "extern_aacsimage")
 
 SET(AACS_IMG_LIB_FOLDER "Release")
