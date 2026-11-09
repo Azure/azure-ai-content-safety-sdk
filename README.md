@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> The Azure AI Content Safety Embedded SDK (preview) retires on
+> **April 30, 2027**. After that date, the SDK is no longer supported.
+> Existing deployments should transition to the
+> [Content Safety cloud REST APIs](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview)
+> before retirement.
+
 # Azure AI Content Safety embedded SDK samples in C++
 
 These samples demonstrate Azure AI Content Safety embedded SDK for C++.
